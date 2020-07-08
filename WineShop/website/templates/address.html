@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title></title>
+
+    <script>
+      $(document).ready( function () {
+
+        alert('haha')
+        $('#sub').click(function(){
+          var name=$('#fullname').val();
+          var email=$('#email').val();
+          var address=$('#address').val();
+          var Landmark=$('#Landmark').val();
+          var age=$('#Age').val();
+          var Number=$('#Number').val();
+
+          if(name.length<=0||email.length<=0||address.length<=0||Landmark.length<=0||age.length<=0||Number.length<=0){
+
+            alert("kindly fill all the details");
+          }
+          else{
+            alert(name);
+            alert(email);
+            alert(address);
+            alert(Landmark);
+            alert(age);
+            alert(Number);
+            localStorage.setItem('name',name);
+            localStorage.setItem('email',email);
+            localStorage.setItem('address',address);
+            localStorage.setItem('Landmark',Landmark);
+            localStorage.setItem('age',age);
+            localStorage.setItem('Number',Number);
+          }
+
+
+
+
+        });
+      } );
+
+    </script>
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div clss="col-sm-12">
+
+          <form class="form-horizontal" action="/action_page.php">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Email:</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="email" placeholder="Enter email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Full Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="fullname" placeholder="Enter name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Address</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="address" placeholder="Enter Address">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Land Mark</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="Landmark" placeholder="Enter Landmark">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Age</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="Age" placeholder="Enter Age">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="Number" placeholder="Enter Number">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label><input type="checkbox"> Remember me</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-default" id="sub">Submit</button>
+    </div>
+  </div>
+</form>
+
+
+
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+  </body>
+</html>
