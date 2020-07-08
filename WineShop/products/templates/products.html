@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!-- Beer/Whiskey/Vodka/Wine/Spirits -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> Products </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style>
+      body {font-family: Arial;}
+
+      /* Style the tab */
+      .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+      }
+
+      /* Style the buttons inside the tab */
+      .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+      }
+
+      /* Change background color of buttons on hover */
+      .tab button:hover {
+        background-color: #ddd;
+      }
+
+      /* Create an active/current tablink class */
+      .tab button.active {
+        background-color: #ccc;
+      }
+
+      /* Style the tab content */
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+      }
+      #product_table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      #product_table td, #product_table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      #product_table tr:nth-child(even){background-color: #f2f2f2;}
+
+      #product_table tr:hover {background-color: #ddd;}
+
+      #product_table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      .center {
+        position: relative;
+        margin-left: 40%;
+      }
+    </style>
+    </head>
+  <body>
+    <div class="container-fluid">
+      <div class="tab">
+        <button class="tablinks" onclick="openCategory(event, 'Beer')">Beer</button>
+        <button class="tablinks" onclick="openCategory(event, 'Whiskey')">Whiskey</button>
+        <button class="tablinks" onclick="openCategory(event, 'Wine')">Wine</button>
+        <button class="tablinks" onclick="openCategory(event, 'Vodka')">Vodka</button>
+        <button class="tablinks" onclick="openCategory(event, 'Spirits')">Spirits</button>
+      </div>
+
+      <div id="Beer" class="tabcontent">
+        <h3>Beers</h3>
+
+          <table id="product_table">
+                <tr>
+                  <th>Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Action</th>
+                </tr>
+                {% for i,j in data.items %}
+                  {% if j.3 == 'Beers' %}
+                    <tr id ={{i}}>
+                      <td> {{j.1}} </td>
+                      <td> {{j.2}} ml </td>
+                      <td> Rs. {{j.0}} </td>
+                      <td>
+                        <select class="btn btn-light btn-sm" id="qty">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                        </select>
+                        <button type="button" id="cart" class='btn btn-success btn-sm'> Add to cart </button>
+                      </td>
+                    </tr>
+                  {% endif %}
+              {% endfor %}
+          </table>
+      </div>
+
+      <div id="Whiskey" class="tabcontent">
+        <h3>Whiskey</h3>
+
+        <table id="product_table">
+              <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+              {% for i,j in data.items %}
+                {% if j.3 == 'Whiskey' %}
+                  <tr id ={{i}}>
+                    <td> {{j.1}} </td>
+                    <td> {{j.2}} ml </td>
+                    <td> Rs. {{j.0}} </td>
+                    <td>
+                      <select class="btn btn-light btn-sm" id="qty">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                      </select>
+                      <button type="button" id="cart" class='btn btn-success btn-sm'> Add to cart </button>
+                    </td>
+                  </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+      </div>
+
+      <div id="Wine" class="tabcontent">
+        <h3>Wine</h3>
+
+        <table id="product_table">
+              <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+              {% for i,j in data.items %}
+                {% if j.3 == 'Wine' %}
+                  <tr id ={{i}}>
+                    <td> {{j.1}} </td>
+                    <td> {{j.2}} ml </td>
+                    <td> Rs. {{j.0}} </td>
+                    <td>
+                      <select class="btn btn-light btn-sm" id="qty">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                      </select>
+                      <button type="button" id="cart" class='btn btn-success btn-sm'> Add to cart </button>
+                    </td>
+                  </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+      </div>
+
+      <div id="Vodka" class="tabcontent">
+        <h3>Vodka</h3>
+
+        <table id="product_table">
+              <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+              {% for i,j in data.items %}
+                {% if j.3 == 'Vodka' %}
+                  <tr id ={{i}}>
+                    <td> {{j.1}} </td>
+                    <td> {{j.2}} ml </td>
+                    <td> Rs. {{j.0}} </td>
+                    <td>
+                      <span>Quantity: </span>
+                      <select class="btn btn-light btn-sm" id="qty">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                      </select>
+                      <button type="button" id="cart" class='btn btn-success btn-sm'> Add to cart </button>
+                    </td>
+                  </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+      </div>
+
+      <div id="Spirits" class="tabcontent">
+        <h3>Spirits</h3>
+
+        <table id="product_table">
+              <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+              {% for i,j in data.items %}
+                {% if j.3 == 'Spirits' %}
+                  <tr id ={{i}}>
+                    <td> {{j.1}} </td>
+                    <td> {{j.2}} ml </td>
+                    <td> Rs. {{j.0}} </td>
+                    <td>
+                      <select class="btn btn-light btn-sm" id="qty">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                      </select>
+                      <button type="button" id="cart" class='btn btn-success btn-sm'> Add to cart </button>
+                    </td>
+                  </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+      </div>
+
+      <script>
+      $('#cart').click(function(){
+        var cart = {};
+        var id = 1;
+        var quantity = $('#qty').val();
+        if (id in cart)
+        {
+          cart[id] = cart[id] + quantity
+        }
+        else {
+          cart.push({
+              key:   id,
+              value: quantity
+          });
+      }
+        localStorage.setItem("cart", cart);
+      });
+
+      $(function() {
+          document.getElementById("Beer").style.display = "block";
+      });
+      function openCategory(evt, category) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(category).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      </script>
+
+    </div>
+  </body>
+</html>
