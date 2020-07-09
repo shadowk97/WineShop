@@ -98,8 +98,8 @@
                   <th>Action</th>
                 </tr>
                 {% for i,j in data.items %}
-                  {% if j.3 == 'Beers' %}
-                    <tr id ={{i}}>
+                  {% if j.3 == 'beer' %}
+                    <tr>
                       <td> {{j.1}} </td>
                       <td> {{j.2}} ml </td>
                       <td> Rs. {{j.0}} </td>
@@ -115,7 +115,7 @@
                           <option value="8">8</option>
                           <option value="9">9</option>
                         </select>
-                        <button type="button" id="cart" class='btn btn-success btn-sm'> Add to cart </button>
+                        <button type="button" id="{{i}}" class='btn btn-success btn-sm' onclick='cart(this.id)'> Add to cart </button>
                       </td>
                     </tr>
                   {% endif %}
@@ -134,8 +134,8 @@
                 <th>Action</th>
               </tr>
               {% for i,j in data.items %}
-                {% if j.3 == 'Whiskey' %}
-                  <tr id ={{i}}>
+                {% if j.3 == 'whiskey' %}
+                  <tr>
                     <td> {{j.1}} </td>
                     <td> {{j.2}} ml </td>
                     <td> Rs. {{j.0}} </td>
@@ -151,7 +151,7 @@
                         <option value="8">8</option>
                         <option value="9">9</option>
                       </select>
-                      <button type="button" id="cart" class='btn btn-success btn-sm'> Add to cart </button>
+                      <button type="button" id="{{i}}" class='btn btn-success btn-sm' onclick='cart(this.id)'> Add to cart </button>
                     </td>
                   </tr>
                 {% endif %}
@@ -170,8 +170,8 @@
                 <th>Action</th>
               </tr>
               {% for i,j in data.items %}
-                {% if j.3 == 'Wine' %}
-                  <tr id ={{i}}>
+                {% if j.3 == 'wine' %}
+                  <tr>
                     <td> {{j.1}} </td>
                     <td> {{j.2}} ml </td>
                     <td> Rs. {{j.0}} </td>
@@ -187,7 +187,7 @@
                         <option value="8">8</option>
                         <option value="9">9</option>
                       </select>
-                      <button type="button" id="cart" class='btn btn-success btn-sm'> Add to cart </button>
+                      <button type="button" id="{{i}}" class='btn btn-success btn-sm' onclick='cart(this.id)'> Add to cart </button>
                     </td>
                   </tr>
                 {% endif %}
@@ -206,8 +206,8 @@
                 <th>Action</th>
               </tr>
               {% for i,j in data.items %}
-                {% if j.3 == 'Vodka' %}
-                  <tr id ={{i}}>
+                {% if j.3 == 'vodka' %}
+                  <tr>
                     <td> {{j.1}} </td>
                     <td> {{j.2}} ml </td>
                     <td> Rs. {{j.0}} </td>
@@ -224,7 +224,7 @@
                         <option value="8">8</option>
                         <option value="9">9</option>
                       </select>
-                      <button type="button" id="cart" class='btn btn-success btn-sm'> Add to cart </button>
+                      <button type="button" id="{{i}}" class='btn btn-success btn-sm' onclick='cart(this.id)'> Add to cart </button>
                     </td>
                   </tr>
                 {% endif %}
@@ -243,8 +243,8 @@
                 <th>Action</th>
               </tr>
               {% for i,j in data.items %}
-                {% if j.3 == 'Spirits' %}
-                  <tr id ={{i}}>
+                {% if j.3 == 'spirits' %}
+                  <tr>
                     <td> {{j.1}} </td>
                     <td> {{j.2}} ml </td>
                     <td> Rs. {{j.0}} </td>
@@ -260,7 +260,7 @@
                         <option value="8">8</option>
                         <option value="9">9</option>
                       </select>
-                      <button type="button" id="cart" class='btn btn-success btn-sm'> Add to cart </button>
+                      <button type="button" id="{{i}}" class='btn btn-success btn-sm' onclick='cart(this.id)'> Add to cart </button>
                     </td>
                   </tr>
                 {% endif %}
@@ -269,25 +269,31 @@
       </div>
 
       <script>
-      $('#cart').click(function(){
-        var cart = {};
-        var id = 1;
-        var quantity = $('#qty').val();
+      function cart(id)
+      {
+        var cart = JSON.parse(localStorage.getItem('cart'));
+        alert('id = ' + id)
+        var quantity = Number($('#qty').val());
         if (id in cart)
         {
-          cart[id] = cart[id] + quantity
+          cart[id].value = Number(cart[id].value) + quantity
         }
         else {
           cart.push({
               key:   id,
               value: quantity
           });
+        }
+        window.localStorage.setItem("cart", JSON.stringify(cart));
       }
-        localStorage.setItem("cart", cart);
-      });
 
       $(function() {
           document.getElementById("Beer").style.display = "block";
+          if(localStorage.getItem("cart") === null)
+          {
+            var cart = [];
+            window.localStorage.setItem('cart',JSON.stringify(cart));
+          }
       });
       function openCategory(evt, category) {
         var i, tabcontent, tablinks;
