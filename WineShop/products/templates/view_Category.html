@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"></script>
+  <script src="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+    <meta charset="utf-8">
+    <title></title>
+
+  <script>
+      $(document).ready( function () {
+        if(localStorage.getItem("cart") === null)
+          {
+            var cart = [];
+            window.localStorage.setItem('cart',JSON.stringify(cart));
+          }
+
+         $('#table_id').DataTable();
+         //$('.btn').click(function(){
+
+
+
+         //});
+
+      } );
+
+      function swag(id){
+        var cart = JSON.parse(localStorage.getItem('cart'));
+        var qt=  $('.k').parentElement.parentElement.children[0].value;
+        alert(id);
+        alert(qt);
+      }
+
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Wine Shop</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#">Aout Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Cart</a></li>
+        <li><a href="#">Update Address</a></li>
+        <li><a href="#">Orders</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    <div class="container-fluid">
+
+      <div class="row"style="margin-top:70px;">
+
+        <div class="col-sm-12" style="">
+          {% block content %}
+
+
+
+
+          <table id="table_id" class="display">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Category</th>
+                  <th>Quantity(ML)</th>
+                  <th>Cart</th>
+
+              </tr>
+          </thead>
+          <tbody>
+            {% for i,j in data_items.items %}
+
+            <tr>
+
+              {% for k in j %}
+
+               <td > <a href="View_product/{{i}}" id="{{i}}" class='k'> {{k}}</a> </td>
+
+              {% endfor %}
+              <td>
+                <input type="number" class="k" style="width:50px;"></number>
+                <button type="button" class="btn btn-success" id="{{i}}" onclick="swag(this.id,)">Add Cart</button></td>
+
+              </tr>
+
+
+
+
+                 {% endfor %}
+
+            </tbody>
+            </table>
+
+
+               {% endblock %}
+
+
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+  <script>
+
+
+
+
+  </script>
+  </body>
+
+</html>

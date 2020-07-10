@@ -10,22 +10,19 @@
   <body>
     <div class="container">
       <div class="row">
-        {% block content %}
-        {% for i,j in data.items %}
+
         <div class="panel panel-success">
         <div class="panel-heading">User Details</div>
         <div class="panel-body">
           <div class="form-group">
-            <label for="">User:<input type="text" name="" value="">  </label><br>
-            <label for="">Address: <input type="text" name="" value=""> </label><br>
-            <label for="">Number:  <input type="text" name="" value=""></label><br>
+
            </div>
-           {% for k in j %}
+
            <div class="form-group">
-            <label for=""> {{k}}<br>
+            <label for=""> <br>
               </div>
 
-                 {% endfor %}
+
 
 
 
@@ -37,9 +34,7 @@
 
 
 
-              {% endfor %}
-
-        {% endblock %}
+          
 
 
 
