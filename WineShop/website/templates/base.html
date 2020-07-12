@@ -1,61 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
     <meta charset="utf-8">
-    <title></title>
-    <style>
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: black;
-  color: white;
-  text-align: center;
-  height: 60px;
-}
-</style>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
-
-
   <body>
     <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="#">Update details</a></li>
-      <li><a href="#">Cart</a></li>
-      <li><a href="#">About Us</a></li>
-    </ul>
-  </div>
-</nav>
-
-<div class="footer">
-  <div class="row">
-    <div class="col-sm-6" style="background-color:black; height:120px;">
-      <label style="margin-top:15px;">Address: Shop No. 2, Shiv Plaza, LBS Rd, Ghatkopar West, Mumbai, Maharashtra 400086</label>
-    </div>
-
-    <div class="col-sm-6" style="background-color:black;height:120px;">
-      <label style="margin-top:15px;">Shop timings are from 10am to 7pm</label>
-    </div>
-
-  </div>
-</div>
-
-
-
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Wine Shop</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Cart</a></li>
+            <li><a href="#">Update Address</a></li>
+            <li><a href="#">Orders</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </body>
-
 </html>
+{% block content %} {% endblock %}
