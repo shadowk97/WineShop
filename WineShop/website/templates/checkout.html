@@ -1,14 +1,14 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
-
-
         $(document).ready( function () {
 
             var items=localStorage.getItem('cart');
@@ -26,16 +26,76 @@
             var data_1=JSON.stringify({{'data.data'}})
             //alert({{'data.data'}});
             alert(data_1);
-
-
           }
         });
         });
 
+        var table = document.getElementById('cart_table');
+        var i = 0;
+        var cart_keys = Object.keys({{'data.data'}})
+        var cart_len - Object.keys({{'data.data'}}).length
+        for(i = 0; i < cart_len; i++)
+        {
+          id = cart_keys[i]
+          var row = table.insertRow(i);
+          row.id = {id}
+          var cell1 = table.insertCell(0);
+          cell1.innerHTML = "{{'data.data'}} (1 ml)";
+          var cell2 = table.insertCell(1);
+          cell2.innerHTML = "{{'data.data'}}";
+          var cell3 = table.insertCell(2);
+          cell3.innerHTML = "Rs. {{'data.data.1'}}";
+          var cell4 = table.insertCell(3);
+          cell4.innerHTML = "<button class='btn btn-sm btn-danger' id='{{i}}'> Remove</button>";
+        }
     </script>
     <title></title>
   </head>
+  {% block content %}
   <body>
-    {{grand_total}}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="panel panel-success">
+        <div class="panel-heading">User Cart</div>
+        <div class="panel-body">
+         <div class="table-responsive">
+           <table class="table table-striped" id='cart_table'>
+             <thead>
+                      <tr>
+                          <th scope="col">Product</th>
+                          <th scope="col">Category</th>
+                          <th scope="col" class="text-center">Quantity</th>
+                          <th scope="col" class="text-right">Price</th>
+                          <th> </th>
+                      </tr>
+            </thead>
+            <tr>
+              <td>{{j.0}} ({{j.3}} ml)</td>
+              <td>{{j.2}}</td>
+              <td><input type="number" id="q{{i}}" min="1" max="20" style="width:50px;"></input></td>
+              <td id='p{{i}}' class="text-right">Rs. {{j.1}}</td>
+              <td class="text-right"> </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><strong>Grand Total</strong></td>
+              <td id="grandTotal" class="text-right"><strong>Rs. {{total}}</strong></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="text-right"><button type="button" name="checkout" id="checkout" class="btn btn-lg  btn-success text-uppercase"> Checkout </button>
+                <div class="text-danger">
+                  <span id="cartval"> Cart value must be Rs 2000 or more.</span>
+                </div>
+              </td>
+            </tr>
+           </table>
+      </div>
+    </div>
   </body>
+  {% endblock %}
 </html>
