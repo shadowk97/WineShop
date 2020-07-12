@@ -6,6 +6,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Shivam Wines</title>
+    <link rel="icon" type="image/png" href="/images/favicon.png"/>
+    <style media="screen">
+      html { height: 100%; }
+
+          footer {
+      text-align: center;
+      padding: 3px;
+      background-color: Black;
+      color: white;
+      height: 100px;
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-inverse">
@@ -16,7 +31,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/home/">Wine Shop</a>
+          <a class="navbar-brand" href="/home/"> <img src="/images/banner.jpg" alt="Wine Shop"> </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
@@ -29,6 +44,22 @@
         </div>
       </div>
     </nav>
+{% block content %} {% endblock %}
+    <footer>
+      <div class="footer">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="small text-center float-left">
+              ADDRESS : Ghatkopar
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="small text-center float-right">
+              Timings : 9 A.M. to 10 P.M.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
-{% block content %} {% endblock %}

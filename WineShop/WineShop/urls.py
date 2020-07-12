@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from WineShop import settings
+from django.conf.urls.static import static
 from website import views
 
 urlpatterns = [
@@ -26,5 +28,10 @@ urlpatterns = [
     path('address/',views.view_Address,name='address'),
     path('orders/',views.view_Orders,name='orders'),
     path('about/',views.view_About,name='about'),
+    path('disclaimer/',views.view_Disclaimer,name='disclaimer'),
     path('', include('website.urls')),
 ]
+
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)

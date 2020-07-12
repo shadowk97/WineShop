@@ -60,3 +60,7 @@ def view_Orders(request):
 def view_About(request):
     context = {}
     return render(request,'./view_About.html', context)
+
+def view_Disclaimer(request):
+    context = {}
+    return render(request,'./view_Disclaimer.html', context)
