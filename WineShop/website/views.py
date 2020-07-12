@@ -126,3 +126,19 @@ def checkout_price(request):
     print(context)
     return JsonResponse(context)
     #return render(request,'./checkout_2.html',context)
+
+def view_Contact(request):
+    context = {}
+    return render(request,'./view_Contact.html', context)
+
+def view_Address(request):
+    context = {}
+    return render(request,'./address.html', context)
+
+def view_Orders(request):
+    context = {}
+    return render(request,'./view_Orders.html', context)
+
+def view_About(request):
+    context = {}
+    return render(request,'./view_About.html', context)
