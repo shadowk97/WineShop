@@ -10,7 +10,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script>
       $(document).ready( function () {
-        var total={{'grand_total'}}
+
+        var total={{grand_total}}
         if(total < 2000){
           $('#checkout').prop('disabled', true);
           $('#cartval').display = "block";
