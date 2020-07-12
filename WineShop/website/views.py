@@ -42,7 +42,7 @@ def view_Cart(request):
 
         list1.clear()
     print(dict1)
-    context={'data_items':dict1}
+    context={'data':dict1}
     return render(request,'./view_Cart.html', context)
 
 
