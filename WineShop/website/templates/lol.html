@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready( function () {
+        var total={{'grand_total'}}
+        if(total < 2000){
+          $('#checkout').prop('disabled', true);
+          $('#cartval').display = "block";
+        }
+        else {
+          $('#cartval').hide();
+        }
+
+      });
+      function remove(id){
+        var cart = JSON.parse(localStorage.getItem('cart'));
+        delete cart[id];
+        window.localStorage.setItem('cart',JSON.stringify(cart));
+        window.location = "/checkout";
+        //window.location.reload();
+
+      }
+      </script>
+  </head>
+
+
+    <body>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="panel panel-success">
+          <div class="panel-heading">User Cart</div>
+          <div class="panel-body">
+             <div class="table-responsive">
+               <table class="table table-striped">
+                 <thead>
+                          <tr>
+                              <th scope="col"> </th>
+                              <th scope="col">Product</th>
+                              <th scope="col">Category</th>
+                              <th scope="col" class="text-center">Quantity</th>
+                              <th scope="col" class="text-right">Price</th>
+                              <th> </th>
+                          </tr>
+                </thead>
+                {% for i,j in data.items %}
+                <tr>
+                  <td><img src="https://dummyimage.com/50x50/55595c/fff" /></td>
+                  <td>{{j.0}} ({{j.3}} ml)</td>
+                  <td>{{j.1}}</td>
+                  <td><input type="number" id="q{{i}}" min="1" max="20" style="width:50px;" value="{{j.4}}"></input></td>
+                  <td id='p{{i}}' class="text-right">Rs. {{j.5}}</td>
+                  <td class="text-right"><button class="btn btn-sm btn-danger" id="{{i}}" onclick="remove(this.id)"> Remove</button> </td>
+                </tr>
+            {% endfor %}
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><strong></strong></td>
+                    <td id="grandTotal" class="text-right"><strong>5 Rs extra chage for permit</strong></td>
+
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><strong>Grand Total</strong></td>
+
+                  <td id="grandTotal" class="text-right"><strong>Rs. {{grand_total}}</strong></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="text-right"><button type="button" name="checkout" id="checkout" class="btn btn-lg  btn-success text-uppercase"> Checkout </button>
+                    <div class="text-danger">
+                      <span id="cartval"> Cart value must be Rs 2000 or more.</span>
+                    </div>
+                  </td>
+                </tr>
+               </table>
+              </div>
+            </div>
+    </body>
+
+</html>
+{% endblock %}

@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/',views.HomeView,name='home'),
     path('products/',views.view_Products,name='products'),
-    path('cart/',views.view_Cart,name='cart'),
+    #path('cart/',views.view_Cart,name='cart'),
 
     path('address',views.AddressView,name='cart'),
     path('checkout/',views.checkoutView,name='cart'),
@@ -33,6 +33,7 @@ urlpatterns = [
     path('orders/',views.view_Orders,name='orders'),
     path('about/',views.view_About,name='about'),
     path('disclaimer/',views.view_Disclaimer,name='disclaimer'),
+    path('cart/',views.lol,name='lol'),
     path('', include('website.urls')),
 ]
 

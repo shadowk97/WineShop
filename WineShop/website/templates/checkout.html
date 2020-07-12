@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> da29be03aaa99f61b5299d04c1dca3220d90b193
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -8,6 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
+<<<<<<< HEAD
             $(document).ready( function () {
                 alert('inside ajax')
                 var items=localStorage.getItem('cart');
@@ -58,49 +63,52 @@
         </script>
     <title></title>
   </head>
+=======
+        $(document).ready( function () {
+            alert('inside ajax')
+            var items=localStorage.getItem('cart');
+            alert(items);
+
+            $.ajax({
+          url: 'checkout_price',
+          data: {
+            'items': items
+          },
+
+          success: function (data) {
+            alert('success');
+            alert({{'data.grand_total'}});
+            var data_1=JSON.stringify({{'data.data'}})
+            console.log(data_1)
+            //alert(data_1);
+            window.location = "/cart";
+          }
+        });
+
+
+
+        });
+
+
+    </script>
+    <title></title>
+  </head>
+
+>>>>>>> da29be03aaa99f61b5299d04c1dca3220d90b193
   <body>
     <div class="container-fluid">
       <div class="row">
         <div class="panel panel-success">
         <div class="panel-heading">User Cart</div>
-        <div class="panel-body">
-         <div class="table-responsive">
-           <table class="table table-striped" id='cart_table'>
-             <thead>
-                      <tr>
-                          <th scope="col">Product</th>
-                          <th scope="col">Category</th>
-                          <th scope="col" class="text-center">Quantity</th>
-                          <th scope="col" class="text-right">Price</th>
-                          <th> </th>
-                      </tr>
-            </thead>
-            <tr>
-              <td>{{j.0}} ({{j.3}} ml)</td>
-              <td>{{j.2}}</td>
-              <td><input type="number" id="q{{i}}" min="1" max="20" style="width:50px;"></input></td>
-              <td id='p{{i}}' class="text-right">Rs. {{j.1}}</td>
-              <td class="text-right"> </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td><strong>Grand Total</strong></td>
-              <td id="grandTotal" class="text-right"><strong>Rs. {{total}}</strong></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td class="text-right"><button type="button" name="checkout" id="checkout" class="btn btn-lg  btn-success text-uppercase"> Checkout </button>
-                <div class="text-danger">
-                  <span id="cartval"> Cart value must be Rs 2000 or more.</span>
-                </div>
-              </td>
-            </tr>
-           </table>
+        <div class="panel-body" id="k">
+
+
       </div>
     </div>
+      </div>
   </body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> da29be03aaa99f61b5299d04c1dca3220d90b193
 </html>

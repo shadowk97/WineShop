@@ -4,7 +4,8 @@ import copy
 import json
 from django.http import JsonResponse
 # Create your views here.
-
+data_cart={}
+data_total=0
 def HomeView(request):
     return render(request, './home.html')
 
@@ -28,31 +29,14 @@ def view_Products(request):
 
     return render(request, './view_Products.html',context)
 
-def view_Cart(request):
-    items= products.objects.all()
-    list1=[]
-    dict1={}
-    list2=[]
-    for i in items:
-        print(i.name,' ',i.price,' ',i.category)
-        list1.append(i.name)
-        list1.append(i.price)
-        list1.append(i.category)
-        list1.append(i.quantity)
-        list2 = copy.deepcopy(list1)
-        dict1[i.id] = list2
 
-        list1.clear()
-    print(dict1)
-    context={'data':dict1}
-    return render(request,'./view_Cart.html', context)
 
 
 def AddressView(request):
     return render(request, './address.html')
 
 def checkoutView(request):
-
+    print('inside views')
     items= products.objects.all()
     list1=[]
     dict1={}
@@ -68,10 +52,14 @@ def checkoutView(request):
 
         list1.clear()
     #print(dict1)
+
+
     context={'data_items':dict1}
+    print(context)
     return render(request,'./checkout.html')
 
 def checkout_price(request):
+    print('inside price views')
     post_id = request.GET['items']
     dict1=post_id
     res = json.loads(post_id)
@@ -119,11 +107,17 @@ def checkout_price(request):
             print(dict1)
             list1.clear()
     print("total price ",total_price)
+    total_price=total_price+5
     context={
     'data':dict1,
     'grand_total':total_price
     }
+    global data_cart
+    global data_total
+    data_cart=dict1
+    data_total=total_price
     print(context)
+    print('data from gloal cart- ',data_cart)
     return JsonResponse(context)
     #return render(request,'./checkout_2.html',context)
 
@@ -136,9 +130,21 @@ def view_Orders(request):
     return render(request,'./view_Orders.html', context)
 
 def view_About(request):
-    context = {}
+    context = {
+
+    }
     return render(request,'./view_About.html', context)
 
 def view_Disclaimer(request):
     context = {}
     return render(request,'./view_Disclaimer.html', context)
+
+def lol(request):
+    global data_cart
+    global data_total
+    print('inside lol')
+    print('data in gloal cart: ',data_cart)
+    context={'data':data_cart,
+    'grand_total':data_total}
+    print(context)
+    return render(request,'./lol.html',context)
