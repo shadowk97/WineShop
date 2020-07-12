@@ -44,3 +44,19 @@ def view_Cart(request):
     print(dict1)
     context={'data':dict1}
     return render(request,'./view_Cart.html', context)
+
+def view_Contact(request):
+    context = {}
+    return render(request,'./view_Contact.html', context)
+
+def view_Address(request):
+    context = {}
+    return render(request,'./address.html', context)
+
+def view_Orders(request):
+    context = {}
+    return render(request,'./view_Orders.html', context)
+
+def view_About(request):
+    context = {}
+    return render(request,'./view_About.html', context)

@@ -22,5 +22,9 @@ urlpatterns = [
     path('home/',views.HomeView,name='home'),
     path('products/',views.view_Products,name='products'),
     path('cart/',views.view_Cart,name='cart'),
+    path('contact/',views.view_Contact,name='contact'),
+    path('address/',views.view_Address,name='address'),
+    path('orders/',views.view_Orders,name='orders'),
+    path('about/',views.view_About,name='about'),
     path('', include('website.urls')),
 ]
