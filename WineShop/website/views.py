@@ -44,3 +44,7 @@ def view_Cart(request):
     print(dict1)
     context={'data_items':dict1}
     return render(request,'./view_Cart.html', context)
+
+
+def AddressView(request):
+    return render(request, './address.html')
