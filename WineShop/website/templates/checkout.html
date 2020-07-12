@@ -1,69 +1,13 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> da29be03aaa99f61b5299d04c1dca3220d90b193
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js%22%3E</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js%22%3E</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css%22%3E
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css%22%3E
     <script>
-<<<<<<< HEAD
-            $(document).ready( function () {
-                alert('inside ajax')
-                var items=localStorage.getItem('cart');
-                alert(items);
-
-                $.ajax({
-              url: 'checkout_price',
-              data: {
-                'items': items
-              },
-
-              success: function (data) {
-                alert('success');
-                alert({{'data.grand_total'}});
-                //var data_1=JSON.stringify({{'data.data'}})
-                console.log(data_1)
-                alert(data_1);
-                var s1=''
-                var s2=''
-                k=data_1
-        for (var property in k) {
-          if (k.hasOwnProperty(property)) {
-              var len1=k[property].length
-            for (i = 0; i < k[property].length; i++) {
-                if(i==0){
-                    s1+='Name : '+k[property][i]+'\n';
-                }
-                else if(i==1){ s1+='Category : '+k[property][i]+'\n'; }
-                else if(i==2){s1+='Quantity(ML) : '+k[property][i]+'\n';}
-                else if(i==3){s1+='Price : '+k[property][i]+'\n';}
-                else if(i==4){s1+='Quantity : '+k[property][i]+'\n';}
-                else if(i==4){s1+='total : '+k[property][i]+'\n';}
-
-
-
-
-            }
-            alert(s1);
-            s1='';
-          }
-
-        }
-                  }
-                });
-                });
-
-
-        </script>
-    <title></title>
-  </head>
-=======
         $(document).ready( function () {
             alert('inside ajax')
             var items=localStorage.getItem('cart');
@@ -94,7 +38,6 @@
     <title></title>
   </head>
 
->>>>>>> da29be03aaa99f61b5299d04c1dca3220d90b193
   <body>
     <div class="container-fluid">
       <div class="row">
@@ -107,8 +50,5 @@
     </div>
       </div>
   </body>
-<<<<<<< HEAD
-=======
 
->>>>>>> da29be03aaa99f61b5299d04c1dca3220d90b193
 </html>
