@@ -1,4 +1,3 @@
-{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -9,49 +8,56 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
-        $(document).ready( function () {
+            $(document).ready( function () {
+                alert('inside ajax')
+                var items=localStorage.getItem('cart');
+                alert(items);
 
-            var items=localStorage.getItem('cart');
-            alert(items)
+                $.ajax({
+              url: 'checkout_price',
+              data: {
+                'items': items
+              },
 
-            $.ajax({
-          url: 'checkout_price',
-          data: {
-            'items': items
-          },
-          //self.close();
-          success: function (data) {
-            alert('success');
-            alert({{'data.grand_total'}});
-            var data_1=JSON.stringify({{'data.data'}})
-            //alert({{'data.data'}});
-            alert(data_1);
+              success: function (data) {
+                alert('success');
+                alert({{'data.grand_total'}});
+                //var data_1=JSON.stringify({{'data.data'}})
+                console.log(data_1)
+                alert(data_1);
+                var s1=''
+                var s2=''
+                k=data_1
+        for (var property in k) {
+          if (k.hasOwnProperty(property)) {
+              var len1=k[property].length
+            for (i = 0; i < k[property].length; i++) {
+                if(i==0){
+                    s1+='Name : '+k[property][i]+'\n';
+                }
+                else if(i==1){ s1+='Category : '+k[property][i]+'\n'; }
+                else if(i==2){s1+='Quantity(ML) : '+k[property][i]+'\n';}
+                else if(i==3){s1+='Price : '+k[property][i]+'\n';}
+                else if(i==4){s1+='Quantity : '+k[property][i]+'\n';}
+                else if(i==4){s1+='total : '+k[property][i]+'\n';}
+
+
+
+
+            }
+            alert(s1);
+            s1='';
           }
-        });
-        });
 
-        var table = document.getElementById('cart_table');
-        var i = 0;
-        var cart_keys = Object.keys({{'data.data'}})
-        var cart_len - Object.keys({{'data.data'}}).length
-        for(i = 0; i < cart_len; i++)
-        {
-          id = cart_keys[i]
-          var row = table.insertRow(i);
-          row.id = {id}
-          var cell1 = table.insertCell(0);
-          cell1.innerHTML = "{{'data.data'}} (1 ml)";
-          var cell2 = table.insertCell(1);
-          cell2.innerHTML = "{{'data.data'}}";
-          var cell3 = table.insertCell(2);
-          cell3.innerHTML = "Rs. {{'data.data.1'}}";
-          var cell4 = table.insertCell(3);
-          cell4.innerHTML = "<button class='btn btn-sm btn-danger' id='{{i}}'> Remove</button>";
         }
-    </script>
+                  }
+                });
+                });
+
+
+        </script>
     <title></title>
   </head>
-  {% block content %}
   <body>
     <div class="container-fluid">
       <div class="row">
@@ -97,5 +103,4 @@
       </div>
     </div>
   </body>
-  {% endblock %}
 </html>
