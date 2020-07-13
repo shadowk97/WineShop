@@ -18,3 +18,11 @@ class products(models.Model):
         choices=categories,
         default='beer',
     )
+    def __str__(self):
+        return self.name
+
+class orders(models.Model):
+    oid = models.DecimalField(max_digits=5,decimal_places=0,null=False)
+    cart = models.TextField(null=False)
+    user = models.TextField(null=False)
+    time = models.DateTimeField(auto_now=True)
