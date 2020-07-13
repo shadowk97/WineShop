@@ -19,7 +19,22 @@
         else {
           $('#cartval').hide();
         }
+        var s1= "Name: "+ localStorage.getItem('name');
+        var s2= "Email: "+localStorage.getItem('email');
+        var s3= "Address: "+ localStorage.getItem('address');
+        var s4= "Landmark: "+ localStorage.getItem('Landmark');
+        var s5= "Age: " +localStorage.getItem('age');
+        var s6= "Number: "+ localStorage.getItem('Number');
 
+        if(s1.length<=0||s2.length<=0||s3.length<=0||s4.length<=0||s5.length<=0||s6.length<=0){
+
+          alert("kindly fill all the user details");
+        }
+        else{
+          var s7 =s1+"\n"+s2+"\n"+s3+"\n"+s4+"\n"+s5+"\n"+s6
+            $("#details").html(s1+"<br/>"+s2+"<br/>"+s3+"<br/>"+s4+"<br/>"+s5+"<br/>"+s6);
+
+        }
       });
       function remove(id){
         var cart = JSON.parse(localStorage.getItem('cart'));
@@ -84,7 +99,7 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td class="text-right"><button type="button" name="checkout" id="checkout" class="btn btn-lg  btn-success text-uppercase"> Checkout </button>
+                  <td class="text-right"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Place Order</button>
                     <div class="text-danger">
                       <span id="cartval"> Cart value must be Rs 2000 or more.</span>
                     </div>
@@ -93,6 +108,27 @@
                </table>
               </div>
             </div>
+            <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Checkout</h4>
+      </div>
+      <div class="modal-body">
+        <p>Total Cart value:Rs. {{grand_total}}</p>
+        <p id='details'></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal">Place Order</button>
+      </div>
+    </div>
+
+  </div>
+</div>
     </body>
 
 </html>
