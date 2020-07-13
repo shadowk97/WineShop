@@ -148,3 +148,11 @@ def lol(request):
     'grand_total':data_total}
     print(context)
     return render(request,'./lol.html',context)
+
+def final_checkout(request):
+    context={
+    'result':'added'
+    }
+    print('inside views')
+    print(request.GET['details'])
+    return JsonResponse(context)

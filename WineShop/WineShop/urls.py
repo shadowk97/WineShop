@@ -34,6 +34,7 @@ urlpatterns = [
     path('about/',views.view_About,name='about'),
     path('disclaimer/',views.view_Disclaimer,name='disclaimer'),
     path('cart/',views.lol,name='lol'),
+    path('cart/final_checkout',views.final_checkout,name='final_checkout'),
     path('', include('website.urls')),
 ]
 
