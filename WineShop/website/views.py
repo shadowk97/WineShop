@@ -125,10 +125,6 @@ def view_Address(request):
     context = {}
     return render(request,'./address.html', context)
 
-def view_Orders(request):
-    context = {}
-    return render(request,'./view_Orders.html', context)
-
 def view_About(request):
     context = {
 
@@ -203,8 +199,7 @@ def final_checkout(request):
     server=smtplib.SMTP_SSL("smtp.gmail.com",465)
     server.login("shivamwines123@gmail.com","9892594870")
     mail_string = "Hi, new order " + str(oid) + " has been placed.\n" + new_cart + "\n" + str(user);
-    #maxhiren@gmail.com"
-    server.sendmail("shivamwines123@gmail.com","joelnetflixacc@gmail.com",mail_string)
+    server.sendmail("shivamwines123@gmail.com","maxhiren@gmail.com",mail_string)
     server.quit()
 
     #Clear Cart

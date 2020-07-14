@@ -21,6 +21,7 @@ from website import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',views.HomeView,name='home'),
     path('home/',views.HomeView,name='home'),
     path('products/',views.view_Products,name='products'),
     #path('cart/',views.view_Cart,name='cart'),
@@ -30,7 +31,6 @@ urlpatterns = [
     path('checkout/checkout_price/',views.checkout_price),
 
     path('address/',views.view_Address,name='address'),
-    path('orders/',views.view_Orders,name='orders'),
     path('about/',views.view_About,name='about'),
     path('disclaimer/',views.view_Disclaimer,name='disclaimer'),
     path('cart/',views.lol,name='lol'),

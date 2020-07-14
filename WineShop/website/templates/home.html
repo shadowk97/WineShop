@@ -19,73 +19,53 @@
     .container {
         position: relative;
         text-align:center;
-        background-image: url("/images/banner.jpg");
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
       }
 
       .center {
         margin: 0;
         position: relative;
-        top: 50%;
+        top: 40%;
         left: 50%;
       }
+
+      @media only screen and (max-width: 6px) {
+        img{
+           margin-left:110px;
+        }
+      }
+
+      @media only screen and (min-width: 800px) {
+        img{
+           margin-left:50%;
+        }
+      }
+
     </style>
 
   </head>
 {% block content %}
-  <body style="background-color: #1f3440;">
+  <body style="background: linear-gradient(to bottom right, #1f3440 0%, #006699 100%);">
     <div class="container center align-middle">
-      <div class="row" style="margin-top: 40px;">
-        <div class="col-sm-2">
+      <br><br><br>
+      <div class="row" style="margin-top: -15px;">
+        <div class="btn btn-sm btn-success btn-block" onclick="window.location.href='/products'" style="font-size: 30px;">
+          Place Order
         </div>
-        <div class="col-sm-4">
-          <div class="btn btn-lg btn-primary" onclick="window.location.href='/products'">
-            Place Order
-          </div>
-        </div>
-        <div class="col-sm-2">
-
-        </div>
-        <div class="col-sm-4">
-          <div class="btn btn-lg btn-primary" onclick="window.location.href='/orders'">
-            Order Status
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-5">
-
-        </div>
-        <div class="col-sm-2">
-          <div class="btn btn-lg btn-warning" onclick="window.location.href='/disclaimer'">
-            Read Disclaimer
-          </div>
-        </div>
-        <div class="col-sm-5">
-
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-2">
-
-        </div>
-        <div class="col-sm-4">
-          <div class="btn btn-lg btn-primary" onclick="window.location.href='tel:09326474766'">
-            Call:09326474766
-          </div>
-        </div>
-        <div class="col-sm-2">
-
-        </div>
-        <div class="col-sm-4">
-          <div class="btn btn-lg btn-primary" onclick="window.location.href='https://wa.me/09326474766?text=I%20Have%20An%20Order%20To%20Place'">
-            WhatsApp:09326474766
-          </div>
+        <br><br><br>
+        <div class="btn btn-sm btn-danger text-center btn-block" onclick="window.location.href='/disclaimer'" style="font-size: 30px;">
+          Read Disclaimer
+        </div><br><br><br>
+        <div class="btn btn-sm btn-success btn-block" onclick="window.location.href='tel:09326474766'" style="font-size: 30px;">
+          Call: 09326474766
+        </div><br><br><br>
+        <div class="btn btn-sm btn-success btn-block" onclick="window.location.href='https://wa.me/09326474766?text=I%20Have%20An%20Order%20To%20Place'" style="font-size: 30px;">
+          WhatsApp: 09326474766
         </div>
       </div>
     </div>
-
   </body>
 </html>
 {% endblock %}
