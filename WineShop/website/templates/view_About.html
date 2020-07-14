@@ -5,9 +5,75 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Armata' rel='stylesheet'>
+    <style media="screen">
+      html{
+        font-family:tahoma, arial, sans-serif;
+        color: white;
+      }
+
+      img {
+        border-radius: 50%;
+        margin: 15px;
+        height:250px;
+        width:250px;
+      }
+
+    .card,.panel{
+      margin: 10px;
+      border: 5px solid #1a252b;
+      border-radius: 23px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      font-family: 'Armata';
+      font-size: 14px;
+      letter-spacing: 2px;
+      word-spacing: 0.4px;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
+    body{
+      background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+    </style>
   </head>
-  <body>
-    About
+  <body style="background-color: #1f3440; color: white; text-align: center;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+          <img class="w3-circle" src="/images/blank.jpg" alt="blank"><br><br><br>
+            Blank <br>
+            Vipul Shinde <br>
+            vipulshide0597@gmail.com <br>
+            Application developer at Tata consultancy services <br><br><br>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card">
+            <img class="w3-circle" src="/images/shadowk97.jpg" alt="shadowk97"><br><br><br>
+            shadowk97 <br>
+            Joel Dsouza <br>
+            joeldzs44@gmail.com <br>
+            Student at Xavier Institute Of Engineering <br><br><br>
+          </div>
+        </div>
+      </div>
+      <br><br><br><br>
+      <div class="row">
+        <div class="col-lg-12">
+          <blockquote class="panel" style="background-color: #1f3440;">
+            <p class="mb-0">We help move their business online.</p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
 {% endblock %}

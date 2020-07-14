@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style media="screen">
+      html{
+        font-family:tahoma, arial, sans-serif;
+      }
+    </style>
     <script>
       $(document).ready( function () {
 
@@ -50,7 +55,11 @@
               },
 
               success: function (data) {
-                alert('successs')
+                var cart = {};
+                window.localStorage.setItem('cart',JSON.stringify(cart));
+                $('#place').attr("disabled", true);
+                $("#details").html("");
+                $("#details").html("Your order has been placed ! <br> Your order id is : " + {{'data.oid'}})
             }
           });
 
@@ -94,7 +103,7 @@
                   <td><img src="https://dummyimage.com/50x50/55595c/fff" /></td>
                   <td>{{j.0}} ({{j.3}} ml)</td>
                   <td>{{j.1}}</td>
-                  <td><input type="number" id="q{{i}}" min="1" max="20" style="width:50px;" value="{{j.4}}"></input></td>
+                  <td><input type="number" id="q{{i}}" min="1" max="20" style="width:50px;" value="{{j.4}}" disabled></input></td>
                   <td id='p{{i}}' class="text-right">Rs. {{j.5}}</td>
                   <td class="text-right"><button class="btn btn-sm btn-danger" id="{{i}}" onclick="remove(this.id)"> Remove</button> </td>
                 </tr>
@@ -122,7 +131,7 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td class="text-right"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Place Order</button>
+                  <td class="text-right"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="checkout">Place Order</button>
                     <div class="text-danger">
                       <span id="cartval"> Cart value must be Rs 2000 or more.</span>
                     </div>

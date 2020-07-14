@@ -26,3 +26,7 @@ class orders(models.Model):
     cart = models.TextField(null=False)
     user = models.TextField(null=False)
     time = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        oid1 = str(self.oid)
+        return oid1
