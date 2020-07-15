@@ -25,8 +25,6 @@ urlpatterns = [
     path('home/',views.HomeView,name='home'),
     path('products/',views.view_Products,name='products'),
     #path('cart/',views.view_Cart,name='cart'),
-
-    path('address',views.AddressView,name='cart'),
     path('checkout/',views.checkoutView,name='cart'),
     path('checkout/checkout_price/',views.checkout_price),
 

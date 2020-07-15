@@ -7,75 +7,101 @@
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <style media="screen">
       html{
         font-family:tahoma, arial, sans-serif;
       }
+      label{
+        font-size: 18px;
+      }
     </style>
     <script>
-      $(document).ready( function () {
-
-        var total={{grand_total}}
-        if(total < 2000){
-          $('#checkout').prop('disabled', true);
-          $('#cartval').display = "block";
-        }
-        else {
-          $('#cartval').hide();
-        }
-
-
-
-      //  else{
-        //  var s7 =s1+"\n"+s2+"\n"+s3+"\n"+s4+"\n"+s5+"\n"+s6
-          //  $("#details").html(s1+"<br/>"+s2+"<br/>"+s3+"<br/>"+s4+"<br/>"+s5+"<br/>"+s6);
-
-        //}
-        var s1= "Name: "+ localStorage.getItem('name');
-        var s2= "Email: "+localStorage.getItem('email');
-        var s3= "Address: "+ localStorage.getItem('address');
-        var s4= "Landmark: "+ localStorage.getItem('Landmark');
-        var s5= "Age: " +localStorage.getItem('age');
-        var s6= "Number: "+ localStorage.getItem('Number');
-        var s7 =s1+"\n"+s2+"\n"+s3+"\n"+s4+"\n"+s5+"\n"+s6
-         $("#details").html(s1+"<br/>"+s2+"<br/>"+s3+"<br/>"+s4+"<br/>"+s5+"<br/>"+s6);
-        $('#place').click(function(){
-          if(localStorage.getItem('name')<=0||localStorage.getItem('email')<=0||localStorage.getItem('address')<=0||localStorage.getItem('Landmark').length<=0||localStorage.getItem('age').length<=0||localStorage.getItem('Number').length<=0){
-
-            alert("kindly fill all the user details");
-
-          }
-          else{
-
-            $.ajax({
-              url: 'final_checkout',
-              data: {
-                'details': s7
-              },
-
-              success: function (data) {
-                var cart = {};
-                window.localStorage.setItem('cart',JSON.stringify(cart));
-                $('#place').attr("disabled", true);
-                $("#details").html("");
-                $("#details").html("Your order has been placed ! <br> Your order id is : " + {{'data.oid'}})
+        $(document).ready( function () {
+          $('#checkout').click(function() {
+            if (localStorage.hasOwnProperty('name') && localStorage.hasOwnProperty('email') && localStorage.hasOwnProperty('address') && localStorage.hasOwnProperty('Landmark') && localStorage.hasOwnProperty('age') && localStorage.hasOwnProperty('Number'))
+            {
+              var Num = "Number";
+              if (localStorage.getItem('name').length > 1 && localStorage.getItem('email').length > 1 && localStorage.getItem('name').length > 1 && localStorage.getItem('Landmark').length > 1 && localStorage.getItem('age').length > 1 && localStorage.getItem(Num).length > 1)
+              {
+                $("#fullname").val(localStorage.getItem('name'));
+                $("#emailtxt").val(localStorage.getItem('email'));
+                $("#addresstxt").val(localStorage.getItem('address'));
+                $("#Landmarktxt").val(localStorage.getItem('Landmark'));
+                $("#agetxt").val(localStorage.getItem('age'));
+                $("#Numbertxt").val(localStorage.getItem('Number'));
+              }
+            }
+            else {
+              localStorage.setItem('name',"a");
+              localStorage.setItem('email',"a");
+              localStorage.setItem('address',"a");
+              localStorage.setItem('Landmark',"a");
+              localStorage.setItem('age',"a");
+              localStorage.setItem('Number',"a");
             }
           });
 
+          $('#close').click(function() {
+            $('#myModal').modal('hide');
+            //$(".myModal").modal("hide");
+            $(".modal-backdrop").remove();
+          });
+
+
+          var total={{grand_total}}
+          if(total < 2000){
+            $('#checkout').prop('disabled', true);
+            $('#cartval').display = "block";
+          }
+          else {
+            $('#cartval').hide();
           }
 
+          var s1= "Name: "+ localStorage.getItem('name');
+          var s2= "Email: "+localStorage.getItem('email');
+          var s3= "Address: "+ localStorage.getItem('address');
+          var s4= "Landmark: "+ localStorage.getItem('Landmark');
+          var s5= "Age: " +localStorage.getItem('age');
+          var s6= "Number: "+ localStorage.getItem('Number');
+          var s7 =s1+"\n"+s2+"\n"+s3+"\n"+s4+"\n"+s5+"\n"+s6
 
-        });
-      });
-      function remove(id){
-        var cart = JSON.parse(localStorage.getItem('cart'));
-        delete cart[id];
-        window.localStorage.setItem('cart',JSON.stringify(cart));
-        window.location = "/checkout";
-        //window.location.reload();
+          $('#place').click(function(){
+            var Num = "Number";
+            if(localStorage.getItem('name').length > 1 && localStorage.getItem('email').length > 1 && localStorage.getItem('name').length > 1 && localStorage.getItem('Landmark').length > 1 && localStorage.getItem('age').length > 1 && localStorage.getItem(Num) > 9)
+            {
+              $.ajax({
+                url: 'final_checkout',
+                data: {
+                  'details': s7
+                },
 
+                success: function (data)
+                {
+                  var cart = {};
+                  window.localStorage.setItem('cart',JSON.stringify(cart));
+                  $('#place').attr("disabled", true);
+                  $('#myModal').modal('hide');
+                  $(".modal-backdrop").remove();
+                  $("#details").html("");
+                  $("#details").html("Your order has been placed ! <br> Your order id is : " +  {{'data.oid'}})
+                  $('#myModalNew').modal('toggle');
+                }
+              });
+            }
+            else{
+                alert("kindly fill all the user details");
+            }
+          });
+
+        function remove(id){
+          var cart = JSON.parse(localStorage.getItem('cart'));
+          delete cart[id];
+          window.localStorage.setItem('cart',JSON.stringify(cart));
+          window.location = "/checkout";
       }
+            });
       </script>
   </head>
 
@@ -114,7 +140,7 @@
                   <td></td>
                   <td></td>
                   <td><strong></strong></td>
-                    <td id="grandTotal" class="text-right"><strong>5 Rs extra chage for permit</strong></td>
+                    <td id="grandTotal" class="text-right"><strong>Rs. 5 Permit Charges</strong></td>
 
                 </tr>
                 <tr>
@@ -131,7 +157,7 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td class="text-right"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="checkout">Place Order</button>
+                  <td class="text-right"><button type="button" class="btn btn-info btn-lg" id="checkout" data-toggle="modal" data-target="#myModal">Place Order</button>
                     <div class="text-danger">
                       <span id="cartval"> Cart value must be Rs 2000 or more.</span>
                     </div>
@@ -140,27 +166,127 @@
                </table>
               </div>
             </div>
+          </div>
+        </div>
+
             <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+              <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Checkout</h4>
-      </div>
-      <div class="modal-body">
-        <p>Total Cart value:Rs. {{grand_total}}</p>
-        <p id='details'></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" id='place'>Place Order</button>
-      </div>
-    </div>
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Checkout</h4>
+              </div>
+                <div class="modal-body">
+                  <p>Total Cart value:Rs. {{grand_total}}</p>
 
-  </div>
+                  <form class="form-horizontal" style="font-size: 24px;">
+                    <div class="form-group" >
+                      <label class="control-label col-sm-2" for="email">Email:</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="emailtxt" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> </input>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-2" for="pwd">Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="fullname" placeholder="Enter name" required> </input>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-2" for="pwd">Address</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="addresstxt" placeholder="Enter Address" required> </input>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-2" for="pwd">Number</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Numbertxt" placeholder="Enter Number" pattern="[0-9]{10}$" required> </input>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-2" for="pwd">Age</label>
+                      <div class="col-sm-10">
+                        <input type="number" class="form-control" id="agetxt" min='25' max='100' placeholder="Enter Age" required> </input>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-2" for="pwd">Landmark</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Landmarktxt" placeholder="Enter Landmark" required> </input>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-10">
+                        <button type="button" id="save" class="btn btn-info" onclick="saveDetails()"> Save Details </button>
+                      </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" id='close'>Close</button>
+                  <button type="button" class="btn btn-success" id='place'>Place Order</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal" tabindex="-1" role="dialog" id="myModalNew">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Order Placed Successfully !</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Total Cart value:Rs. {{grand_total}}</p> <br><br>
+                  <p id="details"></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
 </div>
+
+      <script>
+        function saveDetails()
+        {
+          var nameValue = document.getElementById("fullname").value;
+          var emaillValue = document.getElementById("emailtxt").value;
+          var addressValue = document.getElementById("addresstxt").value;
+          var LandmarkValue = document.getElementById("Landmarktxt").value;
+          var ageValue = $("#agetxt").val();
+          var NumberValue = document.getElementById("Numbertxt").value;
+
+          var nameLen = nameValue.length;
+          var emailLen = emaillValue.length;
+          var addressLen = addressValue.length;
+          var LandmarkLen = LandmarkValue.length;
+          var ageLen = ageValue.length;
+          var NumberLen = NumberValue.length;
+
+          if (nameLen > 1 && emailLen > 1 && addressLen > 1 && LandmarkLen > 1 && ageLen > 1 && NumberLen > 9)
+          {
+            window.localStorage.setItem('name',$("#fullname").val());
+            window.localStorage.setItem('email',$("#emailtxt").val());
+            window.localStorage.setItem('address',$("#addresstxt").val());
+            window.localStorage.setItem('Landmark',$("#Landmarktxt").val());
+            window.localStorage.setItem('age',$("#agetxt").val());
+            window.localStorage.setItem('Number',$("#Numbertxt").val());
+            alert("Details saved!");
+          }
+          else {
+            alert('Please fill correct details.')
+          }
+        };
+      </script>
     </body>
 
 </html>

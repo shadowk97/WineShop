@@ -13,61 +13,72 @@
         font-family:tahoma, arial, sans-serif;
       }
 
-      footer {
-        text-align: center;
-        padding: 3px;
-        padding-top: 25px;
+      .footer {
+
         background-color: Black;
         color: white;
         font-size: 20px;
-        height: 120px;
-        position: fixed;
-        bottom: 0px;
+        overflow: hidden;
+        text-align: center;
+        padding: 3px;
+        padding-top: 25px;
+        height: auto;
         width: 100%;
+        position: relative;
       }
+
       a{
         font-size: 30px;
       }
+
+      .footer {
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+        height: auto; /* Set the fixed height of the footer here */
+      }
+
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-inverse" style="height: 70px;">
+    <nav class="navbar navbar-inverse navbar-expand-md">
       <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/home/" style="font-size:30px;margin-top: 10px;"> Shivam Wines </a>
-        </div>
-        <div class="collapse navbar-collapse navbar-right" id="myNavbar">
-          <ul class="nav navbar-nav" style="margin-top: 10px;">
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/checkout">Cart</a></li>
-            <li><a href="/address">Update Address</a></li>
-          </ul>
-        </div>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/home/" style="font-size:30px;margin-top: 10px;"> Shivam Wines </a>
+          </div>
+          <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+            <ul class="nav navbar-nav" style="margin-top: 10px;">
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/checkout">Cart</a></li>
+              <li><a href="/products">Products</a></li>
+            </ul>
+          </div>
+
+      </nav>
+  {% block content %} {% endblock %}
       </div>
-    </nav>
-{% block content %} {% endblock %}
-    <footer>
-      <div class="footer">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="small text-center float-left">
-              <span style="color: #f5e942;"> ADDRESS </span> : Shivam Wines - Shop No. 38, A Wing Sagar Park, <br>
-              LBS Marg, Ghatkopar West, <br>
-              Mumbai, Maharashtra - 400086
+        <footer class="footer">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="small text-center float-left">
+                <span style="color: #f5e942;"> ADDRESS </span> : Shivam Wines - Shop No. 38, A Wing Sagar Park, <br>
+                Ghatkopar West, Mumbai,<br>
+                Maharashtra - 400086
+              </div>
+              <br>
+            </div>
+            <div class="col-sm-6">
+              <div class="small text-center float-right">
+                <span style="color: #f5e942;">Timings </span> : 10 A.M. to <br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 6 P.M.
+              </div>
             </div>
           </div>
-          <div class="col-sm-6">
-            <div class="small text-center float-right">
-              <span style="color: #f5e942;">Timings </span> : 9 A.M. to <br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 10 P.M.
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+        </footer>
+
   </body>
 </html>

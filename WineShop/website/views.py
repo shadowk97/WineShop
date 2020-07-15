@@ -29,12 +29,6 @@ def view_Products(request):
 
     return render(request, './view_Products.html',context)
 
-
-
-
-def AddressView(request):
-    return render(request, './address.html')
-
 def checkoutView(request):
     print('inside views')
     items= products.objects.all()
@@ -119,7 +113,6 @@ def checkout_price(request):
     print(context)
     print('data from gloal cart- ',data_cart)
     return JsonResponse(context)
-    #return render(request,'./checkout_2.html',context)
 
 def view_Address(request):
     context = {}
@@ -192,15 +185,14 @@ def final_checkout(request):
     order1.cart=new_cart
     order1.user=str(user)
     order1.save()
-
+    print("\n\nOID : ", oid, "\n\n")
     # Send Email
-    import smtplib
-    #import json
-    server=smtplib.SMTP_SSL("smtp.gmail.com",465)
-    server.login("shivamwines123@gmail.com","9892594870")
-    mail_string = "Hi, new order " + str(oid) + " has been placed.\n" + new_cart + "\n" + str(user);
-    server.sendmail("shivamwines123@gmail.com","maxhiren@gmail.com",mail_string)
-    server.quit()
+    #import smtplib
+    #server=smtplib.SMTP_SSL("smtp.gmail.com",465)
+    #server.login("shivamwines123@gmail.com","9892594870")
+    #mail_string = "Hi, new order " + str(oid) + " has been placed.\n" + new_cart + "\n" + str(user);
+    #server.sendmail("shivamwines123@gmail.com","maxhiren@gmail.com",mail_string)
+    #server.quit()
 
     #Clear Cart
     #data_cart = {}
