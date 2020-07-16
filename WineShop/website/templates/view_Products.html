@@ -19,10 +19,14 @@
   <style media="screen">
     html{
       font-family:tahoma, arial, sans-serif;
-      font-size: 20px;
+      font-size: 15px;
     }
     th{
-      font-size: 20px;
+      font-size: 15px;
+    }
+
+    .custom{
+      font-size: 15px;
     }
   </style>
     <meta charset="utf-8">
@@ -36,8 +40,11 @@
             window.localStorage.setItem('cart',JSON.stringify(cart));
           }
 
-         $('#table_id').DataTable();
-      } );
+         //$('#table_id').DataTable();
+         $('#table_id').dataTable( {
+           "pageLength": 50
+         } );
+       });
 
       function cart(id,qt){
         var cart = JSON.parse(localStorage.getItem('cart'));
@@ -63,7 +70,7 @@
     </script>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="height: auto; min-height:100%;">
 
       <div class="row"style="margin-top:70px;">
 
@@ -73,7 +80,7 @@
 
 
 
-          <table id="table_id" class="display">
+          <table id="table_id" class="display custom">
           <thead>
               <tr>
                   <th>Name</th>
@@ -120,9 +127,7 @@
       </div>
 
     </div>
-  <script>
-
-  </script>
+    <br><br><br><br><br><br><br><br>
   </body>
 
 </html>

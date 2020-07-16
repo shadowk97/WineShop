@@ -9,25 +9,25 @@ data_total=0
 def HomeView(request):
     return render(request, './home.html')
 
-def view_Products(request):
-    items= products.objects.all()
-    list1=[]
-    dict1={}
-    list2=[]
-    for i in items:
-        print(i.name,' ',i.price,' ',i.category)
-        list1.append(i.name)
-        list1.append(i.price)
-        list1.append(i.category)
-        list1.append(i.quantity)
-        list2 = copy.deepcopy(list1)
-        dict1[i.id] = list2
-
-        list1.clear()
-    print(dict1)
-    context={'data_items':dict1}
-
-    return render(request, './view_Products.html',context)
+#def view_Products(request):
+#    items= products.objects.all()
+#    list1=[]
+#    dict1={}
+#    list2=[]
+#    for i in items:
+#        print(i.name,' ',i.price,' ',i.category)
+#        list1.append(i.name)
+#        list1.append(i.price)
+#        list1.append(i.category)
+#        list1.append(i.quantity)
+#        list2 = copy.deepcopy(list1)
+#        dict1[i.id] = list2
+#
+#        list1.clear()
+#    print(dict1)
+#    context={'data_items':dict1}
+#
+#    return render(request, './view_Products.html',context)
 
 def checkoutView(request):
     print('inside views')
@@ -201,3 +201,101 @@ def final_checkout(request):
 def view_new_products(request):
     context = {}
     return render(request,'./products.html',context)
+
+def view_Whiskey(request):
+    items= products.objects.filter(category='whiskey')
+    list1=[]
+    dict1={}
+    list2=[]
+    for i in items:
+        print(i.name,' ',i.price,' ',i.category)
+        list1.append(i.name)
+        list1.append(i.price)
+        list1.append(i.category)
+        list1.append(i.quantity)
+        list2 = copy.deepcopy(list1)
+        dict1[i.id] = list2
+
+        list1.clear()
+    print(dict1)
+    context={'data_items':dict1}
+
+    return render(request, './view_Products.html',context)
+
+def view_Vodka(request):
+    items= products.objects.filter(category='vodka')
+    list1=[]
+    dict1={}
+    list2=[]
+    for i in items:
+        print(i.name,' ',i.price,' ',i.category)
+        list1.append(i.name)
+        list1.append(i.price)
+        list1.append(i.category)
+        list1.append(i.quantity)
+        list2 = copy.deepcopy(list1)
+        dict1[i.id] = list2
+        list1.clear()
+    print(dict1)
+    context={'data_items':dict1}
+    return render(request, './view_Products.html',context)
+
+def view_Wine(request):
+    items= products.objects.filter(category='wine')
+    list1=[]
+    dict1={}
+    list2=[]
+    for i in items:
+        print(i.name,' ',i.price,' ',i.category)
+        list1.append(i.name)
+        list1.append(i.price)
+        list1.append(i.category)
+        list1.append(i.quantity)
+        list2 = copy.deepcopy(list1)
+        dict1[i.id] = list2
+
+        list1.clear()
+    print(dict1)
+    context={'data_items':dict1}
+
+    return render(request, './view_Products.html',context)
+
+def view_Beers(request):
+    items= products.objects.filter(category='beer')
+    list1=[]
+    dict1={}
+    list2=[]
+    for i in items:
+        print(i.name,' ',i.price,' ',i.category)
+        list1.append(i.name)
+        list1.append(i.price)
+        list1.append(i.category)
+        list1.append(i.quantity)
+        list2 = copy.deepcopy(list1)
+        dict1[i.id] = list2
+
+        list1.clear()
+    print(dict1)
+    context={'data_items':dict1}
+
+    return render(request, './view_Products.html',context)
+
+def view_Spirits(request):
+    items= products.objects.filter(category='spirits')
+    list1=[]
+    dict1={}
+    list2=[]
+    for i in items:
+        print(i.name,' ',i.price,' ',i.category)
+        list1.append(i.name)
+        list1.append(i.price)
+        list1.append(i.category)
+        list1.append(i.quantity)
+        list2 = copy.deepcopy(list1)
+        dict1[i.id] = list2
+
+        list1.clear()
+    print(dict1)
+    context={'data_items':dict1}
+
+    return render(request, './view_Products.html',context)

@@ -23,9 +23,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.HomeView,name='home'),
     path('home/',views.HomeView,name='home'),
-    path('products/',views.view_Products,name='products'),
+    #path('products/',views.view_Products,name='products'),
     ###################
-    path('product/',views.view_new_products,name='products'),
+    path('products/',views.view_new_products,name='products'),
+    path('products/whiskey/',views.view_Whiskey,name='whiskey'),
+    path('products/wine/',views.view_Wine,name='wine'),
+    path('products/vodka/',views.view_Vodka,name='vodka'),
+    path('products/beers/',views.view_Beers,name='beers'),
+    path('products/spirits/',views.view_Spirits,name='spirits'),
     ####################
     path('checkout/',views.checkoutView,name='cart'),
     path('checkout/checkout_price/',views.checkout_price),
