@@ -19,9 +19,19 @@
     </style>
     <script>
         $(document).ready( function () {
+          if (localStorage.hasOwnProperty('name') && localStorage.hasOwnProperty('email') && localStorage.hasOwnProperty('address') && localStorage.hasOwnProperty('Landmark') && localStorage.hasOwnProperty('age') && localStorage.hasOwnProperty('Number'))
+          {}
+          else {
+            localStorage.setItem('name',"a");
+            localStorage.setItem('email',"a");
+            localStorage.setItem('address',"a");
+            localStorage.setItem('Landmark',"a");
+            localStorage.setItem('age',"a");
+            localStorage.setItem('Number',"a");
+          }
+
           $('#checkout').click(function() {
-            if (localStorage.hasOwnProperty('name') && localStorage.hasOwnProperty('email') && localStorage.hasOwnProperty('address') && localStorage.hasOwnProperty('Landmark') && localStorage.hasOwnProperty('age') && localStorage.hasOwnProperty('Number'))
-            {
+
               var Num = "Number";
               if (localStorage.getItem('name').length > 1 && localStorage.getItem('email').length > 1 && localStorage.getItem('name').length > 1 && localStorage.getItem('Landmark').length > 1 && localStorage.getItem('age').length > 1 && localStorage.getItem(Num).length > 1)
               {
@@ -32,15 +42,6 @@
                 $("#agetxt").val(localStorage.getItem('age'));
                 $("#Numbertxt").val(localStorage.getItem('Number'));
               }
-            }
-            else {
-              localStorage.setItem('name',"a");
-              localStorage.setItem('email',"a");
-              localStorage.setItem('address',"a");
-              localStorage.setItem('Landmark',"a");
-              localStorage.setItem('age',"a");
-              localStorage.setItem('Number',"a");
-            }
           });
 
           $('#close').click(function() {
@@ -59,18 +60,19 @@
             $('#cartval').hide();
           }
 
-          var s1= "Name: "+ localStorage.getItem('name');
-          var s2= "Email: "+localStorage.getItem('email');
-          var s3= "Address: "+ localStorage.getItem('address');
-          var s4= "Landmark: "+ localStorage.getItem('Landmark');
-          var s5= "Age: " +localStorage.getItem('age');
-          var s6= "Number: "+ localStorage.getItem('Number');
-          var s7 =s1+"\n"+s2+"\n"+s3+"\n"+s4+"\n"+s5+"\n"+s6
 
           $('#place').click(function(){
+            var s1= "Name: "+ window.localStorage.getItem('name');
+            var s2= "Email: "+ window.localStorage.getItem('email');
+            var s3= "Address: "+ window.localStorage.getItem('address');
+            var s4= "Landmark: "+ window.localStorage.getItem('Landmark');
+            var s5= "Age: " + window.localStorage.getItem('age');
+            var s6= "Number: "+ window.localStorage.getItem('Number');
+            var s7 =s1+"\n"+s2+"\n"+s3+"\n"+s4+"\n"+s5+"\n"+s6
             var Num = "Number";
             if(localStorage.getItem('name').length > 1 && localStorage.getItem('email').length > 1 && localStorage.getItem('name').length > 1 && localStorage.getItem('Landmark').length > 1 && localStorage.getItem('age').length > 1 && localStorage.getItem(Num) > 9)
             {
+              alert('s7 : ' + s7)
               $.ajax({
                 url: 'final_checkout',
                 data: {
