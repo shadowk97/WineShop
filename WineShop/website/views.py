@@ -211,7 +211,6 @@ def view_Whiskey(request):
         print(i.name,' ',i.price,' ',i.category)
         list1.append(i.name)
         list1.append(i.price)
-        list1.append(i.category)
         list1.append(i.quantity)
         list2 = copy.deepcopy(list1)
         dict1[i.id] = list2
@@ -231,7 +230,6 @@ def view_Vodka(request):
         print(i.name,' ',i.price,' ',i.category)
         list1.append(i.name)
         list1.append(i.price)
-        list1.append(i.category)
         list1.append(i.quantity)
         list2 = copy.deepcopy(list1)
         dict1[i.id] = list2
@@ -249,7 +247,6 @@ def view_Wine(request):
         print(i.name,' ',i.price,' ',i.category)
         list1.append(i.name)
         list1.append(i.price)
-        list1.append(i.category)
         list1.append(i.quantity)
         list2 = copy.deepcopy(list1)
         dict1[i.id] = list2
@@ -269,7 +266,6 @@ def view_Beers(request):
         print(i.name,' ',i.price,' ',i.category)
         list1.append(i.name)
         list1.append(i.price)
-        list1.append(i.category)
         list1.append(i.quantity)
         list2 = copy.deepcopy(list1)
         dict1[i.id] = list2
@@ -289,7 +285,6 @@ def view_Spirits(request):
         print(i.name,' ',i.price,' ',i.category)
         list1.append(i.name)
         list1.append(i.price)
-        list1.append(i.category)
         list1.append(i.quantity)
         list2 = copy.deepcopy(list1)
         dict1[i.id] = list2
