@@ -24,10 +24,11 @@ urlpatterns = [
     path('',views.HomeView,name='home'),
     path('home/',views.HomeView,name='home'),
     path('products/',views.view_Products,name='products'),
-    #path('cart/',views.view_Cart,name='cart'),
+    ###################
+    path('product/',views.view_new_products,name='products'),
+    ####################
     path('checkout/',views.checkoutView,name='cart'),
     path('checkout/checkout_price/',views.checkout_price),
-
     path('address/',views.view_Address,name='address'),
     path('about/',views.view_About,name='about'),
     path('disclaimer/',views.view_Disclaimer,name='disclaimer'),

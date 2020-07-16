@@ -197,3 +197,7 @@ def final_checkout(request):
     #Clear Cart
     #data_cart = {}
     return JsonResponse(context)
+
+def view_new_products(request):
+    context = {}
+    return render(request,'./products.html',context)
