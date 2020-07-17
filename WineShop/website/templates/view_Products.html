@@ -27,6 +27,7 @@
 
     .custom{
       font-size: 15px;
+      color: #344ee0;
     }
   </style>
     <meta charset="utf-8">
@@ -94,13 +95,10 @@
             {% for i,j in data_items.items %}
 
             <tr>
-
-              {% for k in j %}
-
-               <td > <a id="{{i}}" class='k'> {{k}}</a> </td>
-
-              {% endfor %}
-              <td>
+               <td> <span> {{j.0}}</span> </td>
+               <td> <span>₹ {{j.1}} </span> </td>
+               <td> <span> {{j.2}} (ml)</span> </td>
+               <td>
                 <input type="number" id="q{{i}}" min="1" max="20" style="width:50px;"></input> &nbsp &nbsp
                 <button type="button" class="btn btn-success" id="{{i}}" onclick="cart(this.id,document.getElementById('q{{i}}').value)">Add Cart</button>
               </td>

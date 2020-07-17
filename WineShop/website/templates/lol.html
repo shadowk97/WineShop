@@ -52,7 +52,7 @@
 
 
           var total={{grand_total}}
-          if(total < 2000){
+          if(total < 1000){
             $('#checkout').prop('disabled', true);
             $('#cartval').display = "block";
           }
@@ -132,7 +132,7 @@
                   <td>{{j.0}} ({{j.3}} ml)</td>
                   <td>{{j.1}}</td>
                   <td><input type="number" id="q{{i}}" min="1" max="20" style="width:50px;" value="{{j.4}}" disabled></input></td>
-                  <td id='p{{i}}' class="text-right">Rs. {{j.5}}</td>
+                  <td id='p{{i}}' class="text-right">₹ {{j.5}}</td>
                   <td class="text-right"><button class="btn btn-sm btn-danger" id="{{i}}" onclick="remove(this.id)"> Remove</button> </td>
                 </tr>
             {% endfor %}
@@ -142,7 +142,7 @@
                   <td></td>
                   <td></td>
                   <td><strong></strong></td>
-                    <td id="grandTotal" class="text-right"><strong>Rs. 5 Permit Charges</strong></td>
+                    <td id="grandTotal" class="text-right"><strong>₹ 5 Permit Charges</strong></td>
 
                 </tr>
                 <tr>
@@ -152,7 +152,7 @@
                   <td></td>
                   <td><strong>Grand Total</strong></td>
 
-                  <td id="grandTotal" class="text-right"><strong>Rs. {{grand_total}}</strong></td>
+                  <td id="grandTotal" class="text-right"><strong>₹ {{grand_total}}</strong></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -161,7 +161,7 @@
                   <td></td>
                   <td class="text-right"><button type="button" class="btn btn-info btn-lg" id="checkout" data-toggle="modal" data-target="#myModal">Place Order</button>
                     <div class="text-danger">
-                      <span id="cartval"> Cart value must be Rs 2000 or more.</span>
+                      <span id="cartval"> Cart value must be ₹ 1000 or more.</span>
                     </div>
                   </td>
                 </tr>
@@ -181,7 +181,7 @@
                 <h4 class="modal-title">Checkout</h4>
               </div>
                 <div class="modal-body">
-                  <p>Total Cart value:Rs. {{grand_total}}</p>
+                  <p>Total Cart value:₹ {{grand_total}}</p>
 
                   <form class="form-horizontal" style="font-size: 24px;">
                     <div class="form-group" >
@@ -245,7 +245,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <p>Total Cart value:Rs. {{grand_total}}</p> <br><br>
+                  <p>Total Cart value:₹ {{grand_total}}</p> <br><br>
                   <p id="details"></p>
                 </div>
                 <div class="modal-footer">
